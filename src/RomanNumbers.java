@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -72,5 +75,35 @@ public enum RomanNumbers {
         }
 
         return sb.toString();
+    }
+    public static String calculateRome() throws IOException {
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+        String str = in.readLine();
+        String[] arr = str.split("");
+
+        int value1 = RomanNumbers.romanToArabic(arr[0]);
+        System.out.println("v1 = " + value1);
+        int value2 = RomanNumbers.romanToArabic(arr[2]);
+        System.out.println("v2 = " + value2);
+        int out;
+
+        if ((value1 > 0 && value1 <= 10) && (value2 > 0 && value2 <= 10)) {
+            if (arr[1].equals("+"))
+                out = value1 + value2;
+            else if (arr[1].equals("-"))
+                out = value1- value2;
+            else if (arr[1].equals("*"))
+                out = value1 * value2;
+            else if (arr[1].equals("/"))
+                out =  value1 / value2;
+            else
+                throw new IllegalArgumentException();
+        }
+        else
+            throw new NumberFormatException();
+        System.out.println(out);
+        return RomanNumbers.arabicToRoman(out);
     }
 }
