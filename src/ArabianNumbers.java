@@ -10,6 +10,11 @@ public class ArabianNumbers {
         String str = in.readLine();
         String[] arr = str.split("");
 
+        for (RomanNumbers s: RomanNumbers.values()) {
+            if (String.valueOf(s).equals(arr[0]) ||String.valueOf(s).equals(arr[2]))
+                throw new NumberFormatException();
+        }
+
         if ((Integer.parseInt(arr[0]) > 0 && Integer.parseInt(arr[0]) <= 10) && (Integer.parseInt(arr[2]) > 0 && Integer.parseInt(arr[2]) <= 10)) {
             if (arr[1].equals("+"))
                 out = Integer.parseInt(arr[0]) + Integer.parseInt(arr[2]);
