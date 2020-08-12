@@ -89,6 +89,11 @@ public enum RomanNumbers {
         System.out.println("v2 = " + value2);
         int out;
 
+        for (RomanNumbers s: RomanNumbers.values()) {
+            if (String.valueOf(s).equals(arr[0]) && !String.valueOf(s).equals(arr[2]))
+                throw new NumberFormatException();
+        }
+
         if ((value1 > 0 && value1 <= 10) && (value2 > 0 && value2 <= 10)) {
             if (arr[1].equals("+"))
                 out = value1 + value2;
