@@ -76,21 +76,18 @@ public enum RomanNumbers {
 
         return sb.toString();
     }
-    public static String calculateRome() throws IOException {
+    public static String calculateRome(String[] arr) throws IOException {
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-        String str = in.readLine();
-        String[] arr = str.split("");
 
         int value1 = RomanNumbers.romanToArabic(arr[0]);
-        System.out.println("v1 = " + value1);
+
         int value2 = RomanNumbers.romanToArabic(arr[2]);
-        System.out.println("v2 = " + value2);
+
         int out;
 
         for (RomanNumbers s: RomanNumbers.values()) {
-            if (String.valueOf(s).equals(arr[0]) && !String.valueOf(s).equals(arr[2]))
+            if ((String.valueOf(s).equals(arr[0]) && !String.valueOf(s).equals(arr[2]) || (!String.valueOf(s).equals(arr[0]) && String.valueOf(s).equals(arr[2]))))
                 throw new NumberFormatException();
         }
 
@@ -108,7 +105,7 @@ public enum RomanNumbers {
         }
         else
             throw new NumberFormatException();
-        System.out.println(out);
+
         return RomanNumbers.arabicToRoman(out);
     }
 }
