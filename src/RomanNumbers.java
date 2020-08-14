@@ -93,7 +93,6 @@ public enum RomanNumbers {
             switch (oper) {
                 case '+':
                     out = value1 + value2;
-                    ;
                     break;
                 case '-':
                     out = value1 - value2;
