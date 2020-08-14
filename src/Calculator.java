@@ -17,15 +17,16 @@ public class Calculator {
 
     {
         String str = in.readLine();
-        String[] arr = str.split("");
+        String[] arr = str.split("[+-/*]");
+        System.out.println(arr[0] + " " + arr[1]);
 
         try {
-            if ((Integer.parseInt(arr[0]) > 0 && Integer.parseInt(arr[0]) <= 10) && (Integer.parseInt(arr[2]) > 0 && Integer.parseInt(arr[2]) <= 10)) {
-                finalOut = String.valueOf(ArabianNumbers.calculateArabian(arr));
+            if ((Integer.parseInt(arr[0]) > 0 && Integer.parseInt(arr[0]) <= 10) && (Integer.parseInt(arr[1]) > 0 && Integer.parseInt(arr[1]) <= 10)) {
+                finalOut = String.valueOf(ArabianNumbers.calculateArabian(str, arr));
             } else
-                finalOut = RomanNumbers.calculateRome(arr);
+                finalOut = RomanNumbers.calculateRome(str, arr);
         } catch (NumberFormatException e) {
-            finalOut = RomanNumbers.calculateRome(arr);
+            finalOut = RomanNumbers.calculateRome(str, arr);
         }
 
     }

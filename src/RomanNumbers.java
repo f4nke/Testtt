@@ -76,36 +76,39 @@ public enum RomanNumbers {
 
         return sb.toString();
     }
-    public static String calculateRome(String[] arr) throws IOException {
 
-
-
-        int value1 = RomanNumbers.romanToArabic(arr[0]);
-
-        int value2 = RomanNumbers.romanToArabic(arr[2]);
-
+    public static String calculateRome(String str, String[] arr) throws IOException {
+        char oper = str.charAt(arr[0].length());
         int out;
 
-        for (RomanNumbers s: RomanNumbers.values()) {
-            if ((String.valueOf(s).equals(arr[0]) && !String.valueOf(s).equals(arr[2]) || (!String.valueOf(s).equals(arr[0]) && String.valueOf(s).equals(arr[2]))))
-                throw new NumberFormatException();
-        }
+        int value1 = RomanNumbers.romanToArabic(arr[0]);
+        System.out.println(value1);
+
+        int value2 = RomanNumbers.romanToArabic(arr[1]);
+
+
 
         if ((value1 > 0 && value1 <= 10) && (value2 > 0 && value2 <= 10)) {
-            if (arr[1].equals("+"))
-                out = value1 + value2;
-            else if (arr[1].equals("-"))
-                out = value1- value2;
-            else if (arr[1].equals("*"))
-                out = value1 * value2;
-            else if (arr[1].equals("/"))
-                out =  value1 / value2;
-            else
-                throw new IllegalArgumentException();
-        }
-        else
-            throw new NumberFormatException();
 
-        return RomanNumbers.arabicToRoman(out);
+            switch (oper) {
+                case '+':
+                    out = value1 + value2;
+                    ;
+                    break;
+                case '-':
+                    out = value1 - value2;
+                    break;
+                case '*':
+                    out = value1 * value2;
+                    break;
+                case '/':
+                    out = value1 / value2;
+                    break;
+                default:
+                    throw new IllegalArgumentException();
+            }
+            return RomanNumbers.arabicToRoman(out);
+        }
+        return null;
     }
 }
